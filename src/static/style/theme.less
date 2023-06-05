@@ -1,0 +1,309 @@
+.textOverflow() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+.textOverflow{
+  .textOverflow()
+}
+
+.textOverflowMulti(@line: 2, @bg: #fff) {
+  position: relative;
+  max-height: @line * 1.5em;
+  margin-right: -1em;
+  padding-right: 2em;
+  overflow: hidden;
+  // line-height: 1.5em;
+  text-align: justify;
+  &::before {
+    position: absolute;
+    right: 28rpx;
+    bottom: 0;
+    padding: 0 1px;
+    background: @bg;
+    content: "...";
+  }
+  &::after {
+    position: absolute;
+    right: 28rpx;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: white;
+    content: "";
+  }
+}
+
+.textOverflowMulti2 {
+  .textOverflowMulti(2);
+}
+.textOverflowMulti3 {
+  overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2 /*几行就写数字几*/
+}
+// mixins for clearfix
+// ------------------------
+.clearfix() {
+  zoom: 1;
+  &::before,
+  &::after {
+    display: table;
+    content: " ";
+  }
+  &::after {
+    clear: both;
+    height: 0;
+    font-size: 0;
+    visibility: hidden;
+  }
+}
+
+// 字体颜色设置
+//红色
+.orange {
+  color: #FFB700;
+}
+.fff {
+  color: #ffffff;
+}
+.ddd {
+  color: #8d421b;
+}
+.ggg {
+  color: #d0d0d0;
+}
+.ggg1 {
+  color: #b9b9b9;
+}
+.ggg2 {
+  color: gray;
+}
+.hhh {
+  color: #ffb9ab;
+}
+.red {
+  color: #FF3546;
+}
+.red1{
+  color:#FF987C;
+}
+.green {
+  color: #00C500;
+}
+.blue {
+  color: #38acfc;
+}
+//灰色
+.gray {
+  color: #adadad;
+}
+
+// (12) 字体大小
+@0px: 0px; // margin-left
+.font(@n, @i: 6) when (@i =< @n) {
+  .f@{i} {
+    font-size: @i+ @0px;
+  }
+  .font(@n, (@i + 2)); // +2得到的结果是1,3,5,7
+  // .mg-l(@n, (@i + 2));
+}
+
+.font(36);
+
+// (13) margin-left 左
+@0px: 0px; // margin-left
+.mg-l(@n, @i: 1) when (@i =< @n ) {
+  .mg-l-@{i} {
+    margin-left: @i+ @0px;
+  }
+  .mg-l(@n, (@i + 1)); // +2得到的结果是1,3,5,7
+  // .mg-l(@n, (@i + 2));
+}
+
+.mg-l(50);
+// (13) margin-right
+@0px: 0px; // margin-right 右
+.mg-r(@n, @i: 1) when (@i =< @n) {
+  .mg-r-@{i} {
+    margin-right: @i+ @0px;
+  }
+  .mg-r(@n, (@i + 1)); // +2得到的结果是1,3,5,7
+  // .mg-r(@n, (@i + 2));
+}
+
+.mg-r(50);
+
+// (14) margin-top 上
+.mg-t(@n, @i: 1) when (@i =< @n) {
+  .mg-t-@{i} {
+    margin-top: @i+ @0px;
+  }
+  .mg-t(@n, (@i + 1));
+}
+.mg-t(50);
+
+// margin-bottom 下
+.mg-b(@n, @i: 1) when (@i =< @n) {
+  .mg-b-@{i} {
+    margin-bottom: @i+ @0px;
+  }
+  .mg-b(@n, (@i + 1));
+}
+.mg-b(50);
+
+// 内边距-左
+.pd-l(@n, @i: 1) when (@i =< @n) {
+  .pd-l-@{i} {
+    padding-left: @i+ @0px;
+  }
+  .pd-l(@n, (@i + 1));
+}
+
+.pd-l(50);
+//内边距-上
+.pd-t(@n, @i: 1) when (@i =< @n) {
+  .pd-t-@{i} {
+    padding-top: @i+ @0px;
+  }
+  .pd-t(@n, (@i + 1));
+}
+
+.pd-t(40);
+//内边距-右
+.pd-r(@n, @i: 1) when (@i =< @n) {
+  .pd-r-@{i} {
+    padding-right: @i+ @0px;
+  }
+  .pd-r(@n, (@i + 1));
+}
+
+.pd-r(40);
+.pd-r-50 {
+  padding-right: 50px;
+}
+
+//内边距-下
+.pd-b(@n, @i: 1) when (@i =< @n) {
+  .pd-b-@{i} {
+    padding-bottom: @i+ @0px;
+  }
+  .pd-b(@n, (@i + 1));
+}
+
+.pd-b(50);
+
+.pd-b-60 {
+  padding-bottom: 120rpx;
+}
+
+// flex相关
+// 所有元素水平居中,垂直居中
+.fcc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// 行内所有元素居中
+.ifcc {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// 垂直居中,两端对齐
+.flex-sb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// 垂直居中,分散对齐
+.flex-sa {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+// 剩余空间分配
+.fg1 {
+  flex-grow: 1;
+}
+
+.fg2 {
+  flex-grow: 2;
+}
+
+// 纵向排列
+// 所有元素垂直居中
+.fdcc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+// 单个组合模式:
+// 进入弹性布局模式:
+.flex {
+  display: flex;
+}
+
+// 默认情况下就是这个垂直靠左
+.fdc {
+  display: flex;
+  flex-direction: column;
+}
+
+// 原点
+.jc-start {
+  justify-content: flex-start;
+}
+
+.jc-end {
+  justify-content: flex-end;
+}
+
+// 水平居中
+.jc-center {
+  justify-content: center;
+}
+
+// 两端对齐
+.jc-sb {
+  justify-content: space-between;
+}
+
+// 水平分散
+.jc-sa {
+  justify-content: space-around;
+}
+
+// 垂直居中
+.ai-center {
+  align-items: center;
+}
+// 文本超出就隐藏并且显示省略号
+.hen {
+  //超出的文本隐藏
+  overflow: hidden;
+  //溢出用省略号显示
+  text-overflow: ellipsis;
+  //溢出不换行
+  white-space: nowrap;
+}
+.text-l {
+  text-align: left;
+}
+.text-c {
+  text-align: center;
+}
+.text-r {
+  text-align: right;
+}
+.full-box{
+  width: 100%!important;
+}

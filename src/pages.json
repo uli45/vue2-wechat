@@ -1,0 +1,64 @@
+{
+	"pages": [{
+			"path": "pages/index/index",
+			"style": {
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true,
+				"onReachBottomDistance": 100
+			},
+			"paiName": "首页"
+		},
+		
+		{
+			"path": "pages/mine/index",
+			"style": {
+				"navigationStyle": "custom"
+			},
+			"paiUserGroup": "C",
+			"paiName": "我的"
+		},
+		
+		{
+			"path": "pages/login/bind",
+			"style": {
+				"navigationBarTitleText": "绑定"
+			},
+			"paiUserGroup": "B",
+			"paiName": "绑定"
+		}
+		 
+	],
+	
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#C4CCD4",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "/static/tab/home.png",
+				"selectedIconPath": "/static/tab/home_active.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/mine/index",
+				"iconPath": "/static/tab/mine.png",
+				"selectedIconPath": "/static/tab/mine_active.png",
+				"text": "我的"
+			}
+		]
+	},
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue",
+			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+		}
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+
+		"navigationBarBackgroundColor": "#ffffff",
+		"backgroundColor": "#F8F9FA"
+	}
+}
