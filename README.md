@@ -1,4 +1,4 @@
-# uli-cli
+# uli-cli =》 vue2 wechat基础模版
 
 ## Project setup
 ```
